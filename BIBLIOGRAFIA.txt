@@ -1,0 +1,11 @@
+
+Bibliografía
+Gowrishankar, S., Veena, A., Introduction to Python Programming, CRC, 2019.
+Guttag, J., Introduction to Computation and Programming Using Python, MIT, 2013.
+Johansson, R., Numerical Python: Scientific Computing and Data Science Applications with SciPy, Apress, 2019.
+Kopec, D., Classic Computer Science Problems in Python, Manning Publications, 2019.
+Kenneth Lambert, Fundamentals of Python Data Structures, Cengage Learning PTR, 2013.
+Pine, D.J., Introduction to Python for Science and Engineering, CRC, 2019.
+Stephenson, B., The Python Workbook: A Brief Introduction with Exercises and Solutions, Springer, 2019.
+VanderPlas, J., A whirlwind tour of Python, O’Reilly, 2016.
+VanderPlas, J., Python Data Science Handbook: Essential Tools for Working with Data, O’Reilly, 2017.
