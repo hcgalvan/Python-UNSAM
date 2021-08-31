@@ -45,7 +45,9 @@ def invertir_lista(lista):
         invertida.append (lista.pop(i))  #
     return invertida
 
-l = [1, 2, 3, 4, 5]    
+l = [1, 2, 3, 4, 5]  
 m = invertir_lista(l)
 print(f'Entrada {l}, Salida: {m}')
+
+
 
