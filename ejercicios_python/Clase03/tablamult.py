@@ -19,5 +19,3 @@ def multiplicar():
             tabla.append(e)
         print(f'{i:>6d}:  0 {tabla[0]:3d} {tabla[1]:3d} {tabla[2]:3d} {tabla[3]:3d} {tabla[4]:3d} {tabla[5]:3d} {tabla[6]:3d} {tabla[7]:3d} {tabla[8]:3d}')   
     return
-#%%
-multiplicar()

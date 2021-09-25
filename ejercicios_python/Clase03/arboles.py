@@ -5,7 +5,8 @@ Created on Wed Aug 25 11:07:10 2021
 @author: User
 """
 import csv
-from pprint import pprint
+from collections import Counter
+
 def parques(archivo):
     f = open(archivo,encoding="utf8")
     rows = csv.reader(f)
@@ -36,42 +37,28 @@ def parques(archivo):
 # Ejercicio 3.18: Lectura de los árboles de un parque.
 ############################################################
 
-def leer_parque(nombre_archivo, parques):
+def leer_parque(nombre_archivo, parque):
+    ''' 
+    El nombre de archivo tiene que tener la ubicacion del archivo "../Data/" 
+    '''
     f = open(nombre_archivo, encoding="utf8")
     rows = csv.reader(f)
     encabezados = next(rows)
-    busca = [parques]
+    #busca = [parques]
     parque = []
-    for k in busca:
-        for n_fila, fila in enumerate(rows, start=1):
-            try: #Control de registros vacíos en cualquier punto del archivo
-                record = dict(zip(encabezados, fila))
-                arbol = {}
-                if record['espacio_ve'] == k:
-                    arbol['espacio_ve'] = record['espacio_ve']
-                    arbol['id_especie'] = record['id_especie']
-                    arbol['nombre_com'] = record['nombre_com']
-                    arbol['nombre_cie'] = record['nombre_cie']
-                    arbol['nombre_fam'] = record['nombre_fam']
-                    arbol['nombre_gen'] = record['nombre_gen']
-                    arbol['origen'] = record['origen']
-                    arbol['tipo_folla'] = record['tipo_folla']
-                    arbol['altura_tot'] = float(record['altura_tot'])
-                    arbol['diametro'] = record['diametro']
-                    arbol['inclinacio'] = record['inclinacio']
-                    parque.append(arbol)
-            except ValueError:
+    # for k in busca:
+    for fila in rows:
+        try: #Control de registros vacíos en cualquier punto del archivo
+            record = dict(zip(encabezados, fila))
+            print(record)
+            #arbol = {}
+            if record['espacio_ve'] == parque:
+                parque.append(record)
+        except ValueError:
                 print('Cuidado, faltan valores')
                 continue
-    # headers = ('espacio_ve', 'id_especie', 'nombre_com', 'nombre_cie','nombre_fam','nombre_gen','origen','tipo_folla','altura_tot')
-    #for lista in parque:
-     #   if lista['espacio_ve']==parque:
-            #print('%2s %2s %2s %2s %2s %2s %2s %2s %2s' % headers)
-            #print('---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------')            
-            #print(f'{lista[1]:3d} {lista[2]:3s} {lista[3]:3s} {lista[4]:3s} {lista[5]:3s} {lista[6]:3s} {lista[7]:3s} {lista[8]:3d} {lista[9]:3d} {lista[10]:3d}') 
-            #print('{id_especie:3s} {nombre_com:3s}'.format_map(lista))
-      #      print(lista) #lista['id_especie'], lista['nombre_com'],  lista['nombre_cie'],  lista['nombre_fam'], lista['nombre_gen'],  lista['origen'])
-    return parque
+    f.close()
+    return print(parque)
 
 #############################################################
 # Ejercicio 3.19: Determinar las especies en un parque
@@ -79,17 +66,11 @@ def leer_parque(nombre_archivo, parques):
 # el conjunto de especies (la columna 'nombre_com' del archivo) que figuran en la lista.
 #############################################################
 def especies(lista_arboles):
-    from collections import Counter
-    buscar = parques('../Data/arbolado-en-espacios-verdes.csv')
-    arboles = set(lista_arboles)
-    especie = Counter()
-    for k in buscar:
-        if k['nombre_com'] in arboles:
-            especie[k['nombre_cie']] += 1 # Cuenta las especies y la cantidad de arboles
-        else:
-            continue
-    print(especie)  
-    return
+    especie = []
+    for k, a in enumerate(lista_arboles):
+        especie.append(a['nombre_com'])
+        
+    return set(especie)
 
 ################################################################################    
 #Ejercicio 3.20: Contar ejemplares por especie
@@ -102,40 +83,18 @@ def especies(lista_arboles):
 def contar_ejemplares(lista_arboles): #No esta terminado
 # Esta funcion realiza la busqueda de las 5 especies más frecuentes por parque
 # Los imprime
-    from collections import Counter
-    nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
-    busca = leer_parque(nombre_archivo, 'ANDES, LOS')
-    especie = Counter()
-    for c in busca:
-        especie[c['nombre_com']] += 1            
-    print(especie.most_common(5))
-    '''
-    #### esta seccion era una forma de buscar para 3 parques
-    grupo = []
-    lugar = ['GENERAL PAZ','ANDES, LOS','CENTENARIO' ]
-    for k in lugar:
-        for v, lista in enumerate(buscar, start=0):
-            parques_esp = {}
-            if lista['espacio_ve'] == k:
-                parques_esp['parque'] = lista['espacio_ve']
-                parques_esp['nombre_com'] = lista['nombre_com']
-                grupo.append(parques_esp)
-            else:
-                continue     
-        for c in grupo:
-            especie[c['nombre_com']] += 1
-        print(k, especie.most_common(5))
-    
-    return #print(combinados.most_common(5))                
-    '''
-    return
-
+    ejemplares = Counter()
+    for c in lista_arboles:
+        ejemplares[c['nombre_com']] += 1            
+        
+    #return especie.most_common(5)
+    return ejemplares
 ###############################################################################
 # Ejercicio 3.21: Alturas de una especie en una lista
 ###############################################################################
 
 def obtener_alturas(lista_arboles, especie):
-    from collections import Counter
+
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     buscar = parques(nombre_archivo)
     parque_nom = 'ANDES, LOS'
@@ -182,7 +141,6 @@ def obtener_alturas(lista_arboles, especie):
 ############################################################
 
 def obtener_inclinaciones(lista_arboles, especie):
-    from collections import Counter
     nombre_archivo = '../Data/arbolado-en-espacios-verdes.csv'
     buscar = parques(nombre_archivo)
     parque_nom = 'ANDES, LOS'
@@ -255,21 +213,3 @@ def especimen_mas_inclinado(lista_arboles):
 def especie_promedio_mas_inclinada(lista_arboles):
         
     return
-#%%
-imprimir = leer_parque('../Data/arbolado-en-espacios-verdes.csv', 'GENERAL PAZ')
-print(imprimir)
-
-
-#%%
-especies(['Ciprés','Casuarina','Cedro del Himalaya'])  
-
-#%%
-contar_ejemplares(['Ciprés','Casuarina','Cedro del Himalaya'])  
-#%%
-obtener_alturas(['Jacarandá','Casuarina','Cedro del Himalaya'], 'Jacarandá')
-#%%
-obtener_inclinaciones(['Jacarandá','Casuarina','Cedro del Himalaya'], 'Jacarandá')
-#%%
-especimen_mas_inclinado(['Jacarandá','Casuarina','Cedro del Himalaya'])
-#%%
-especie_promedio_mas_inclinada(['Jacarandá','Casuarina','Cedro del Himalaya'])
