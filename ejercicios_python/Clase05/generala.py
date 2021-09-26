@@ -27,7 +27,7 @@ def tirar2():
     return listdados
 
 
-
+# Ejercicio 5.1: Generala servida
 def es_generala(tirada):
     pos = 0  # comenzamos suponiendo que e no está
     valor = tirada[pos]
@@ -75,6 +75,9 @@ print(prob_generala(1))
 
 #%%
 tirar()
+#%%
+print(tirar2())
+
 
 #%%
 es_generala(tirar())
