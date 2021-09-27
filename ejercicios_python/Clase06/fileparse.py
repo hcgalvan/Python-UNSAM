@@ -32,8 +32,24 @@ def parse_csv(nombre_archivo, select = None, types = None):
         else:
             indices = []
 
-         
+        registros = []
+        for fila in filas:
+            if not fila:    # Saltear filas vacías
+                continue
+            # Filtrar la fila si se especificaron columnas
+            if indices:
+                fila = [fila[index] for index in indices]
 
+            # Armar el diccionario
+            registro = dict(zip(encabezados, fila))
+            registros.append(registro)
+         
+        for fila in filas:
+            if not fila:    # Saltear filas vacías
+                continue
+            # Filtrar la fila si se especificaron columnas
+                
+'''
         registros = []
         for fila in filas:
             if not fila:    # Saltear filas vacías
@@ -41,13 +57,13 @@ def parse_csv(nombre_archivo, select = None, types = None):
             # Filtrar la fila si se especificaron columnas
             if indices:
                if types: 
-                   fila = [type[types[index](fila[index])] for index in indices]
+                   fila = [type(types[index](fila[index])) for index in indices]
                    print ( fila )
                else:
                    fila = [fila[index] for index in indices]
             else:
                    if types: 
-                       fila = [type[types[index](fila[index])] for index in types]
+                       fila = [type(types[index](fila[index])) for index in types]
                        print ( fila )
 
 
@@ -55,4 +71,7 @@ def parse_csv(nombre_archivo, select = None, types = None):
             registro = dict(zip(encabezados, fila))
             registros.append(registro)
 
+'''
     return registros
+#%%
+camion = parse_csv('../Data/camion.csv')

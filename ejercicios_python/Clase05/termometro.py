@@ -11,21 +11,17 @@ def medir_temp(n):
     a = []
     for i in range(n):
          a.append(random.normalvariate(0,0.2))
-
+    np.save('../Data/temperaturas', a)
     return np.array(a)
 
 def resumen_temp(n):
-    for i in range(n):
-         temp = medir_temp(n)
-         maximo = max(temp)
-         minimo = min(temp)
-         prome = (sum(temp)/n)
-         dat = np.sort(temp)
-         dat1 = round(len(dat)/2)
-         mediana = dat[dat1]
-         tup = (maximo, minimo, prome, mediana)
-         print(tup) #imprimo cada tupla
-    return #print(tup)
+    temp = medir_temp(n)
+    maximo = max(temp)
+    minimo = min(temp)
+    prome = (sum(temp)/n)
+    dat1 = round(len(temp)/2)
+    mediana = np.sort(temp)[dat1]
+    datos = ( maximo, minimo, prome, mediana )
 
-#%%
-resumen_temp(10)
+         
+    return datos
