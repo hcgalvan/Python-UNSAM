@@ -4,6 +4,20 @@ Created on Sun Aug 29 21:41:42 2021
 
 @author: User
 """
+#############################
+# Búsqueda lineal
+#############################
+def busqueda_lineal_lordenada(lista, e):
+    '''Si e está en la lista devuelve su posición, de lo
+    contrario devuelve -1.
+    '''
+    pos = -1  # comenzamos suponiendo que e no está
+    for i, z in enumerate(lista): # recorremos la lista
+        if z <= e:   # si encontramos a e
+            pos = i  # guardamos su posición
+        else:
+            break    # y salimos del ciclo
+    return pos
 
 ##############################################################################
 #  reciba una lista y un elemento y devuelva la posición de la última aparición
@@ -17,7 +31,7 @@ def buscar_u_elemento(lista, e):
             pos = i  # guardamos su posición
         else:
             continue    # y salimos del ciclo
-    return print(pos)
+    return pos
 
 ##############################################################################
 # reciba una lista y un elemento y devuelva la cantidad de veces que aparece el elemento en la lista
@@ -30,7 +44,7 @@ def buscar_n_elemento(lista, e):
             pos += 1  # contamos las veces que aparece
         else:
             continue    # y salimos del ciclo
-    return print(pos)
+    return pos
 
 ##############################################################################
 # busque el valor máximo de una lista de números positivos
@@ -56,7 +70,7 @@ def maximo(lista):
             continue
         
         
-    return print(v1)
+    return v1
 
 def minimo(lista):
     '''Devuelve el máximo de una lista, 
@@ -81,9 +95,11 @@ def minimo(lista):
             continue
         
         
-    return print(v1)
+    return v1
 
 
+#%%
+print(busqueda_lineal_lordenada([1,2,3,3,4], 3))
 #%%
 buscar_u_elemento([1,2,3,2,3,4],3)
 

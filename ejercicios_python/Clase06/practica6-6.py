@@ -49,4 +49,4 @@ def incrementar(s):
 # ¿Te parece que incrementar() es una función lineal, cuadrática, logarítmica o exponencial? ¿Por qué?
 ##################
 # Ejercicio 6.18: Un ejemplo más complejo
-
+incrementar()

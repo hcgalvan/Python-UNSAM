@@ -16,7 +16,7 @@ def busqueda_con_index(lista, e):
         pos = lista.index(e)
     else:
         pos = -1
-    return print(pos)
+    return pos
 
 #############################
 # Búsqueda lineal
@@ -32,7 +32,7 @@ def busqueda_lineal(lista, e):
             pos = i  # guardamos su posición
             break    # y salimos del ciclo
         i += 1       
-    return print(pos)
+    return pos
 
 #############################
 # Búsqueda lineal
@@ -46,4 +46,6 @@ def busqueda_lineal2(lista, e):
         if z == e:   # si encontramos a e
             pos = i  # guardamos su posición
             break    # y salimos del ciclo
-    return print(pos)
+    return pos
+#%%
+print(busqueda_lineal2([1, 4, 54, 3, 0, -1], 0))

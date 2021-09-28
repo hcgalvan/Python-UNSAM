@@ -151,5 +151,3 @@ plt.title("La curva de llenado se desacelera al final")
 plt.show()
 
 #%%
-plt.hist(temperaturas,bins=25)
-plt.show() #el show no hace falta en algunos entornos. A veces lo omitiremos.

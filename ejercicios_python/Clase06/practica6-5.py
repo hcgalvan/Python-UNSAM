@@ -18,7 +18,9 @@ def busqueda_binaria(lista, x, verbose = False):
     pos = -1 # Inicializo respuesta, el valor no fue encontrado
     izq = 0
     der = len(lista) - 1
+    comps = 0
     while izq <= der:
+        comps += 1
         medio = (izq + der) // 2
         if verbose:
             print(f'[DEBUG] {izq:3d} |{der:>3d} |{medio:3d}')
@@ -28,7 +30,7 @@ def busqueda_binaria(lista, x, verbose = False):
             der = medio - 1 # descarto mitad derecha
         else:               # if lista[medio] < x:
             izq = medio + 1 # descarto mitad izquierda
-    return pos
+    return pos, comps
 
 ''' 
 Pregunta: 
@@ -36,6 +38,7 @@ Pregunta:
     ¿Qué pasaría su usáramos /?
 '''
 #%%
+
 # Ejercicio 6.13: Búsqueda lineal sobre listas ordenadas
 #       En el peor caso, 
 #         ¿cuál es nuestra nueva hipótesis sobre comportamiento del algoritmo? 

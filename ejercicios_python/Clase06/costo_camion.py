@@ -18,27 +18,25 @@ Este programa funciona si estas ubicado en "..\Ejercicio\Clase03\"
 # Usando enumerate(), modificá tu programa costo_camion.py 
 # de forma que imprima un aviso (warning) cada vez que
 # encuentre una fila incorrecta.
-import csv
+
+from informe_funciones import leer_camion
 def costo_camion(nombre_archivo):
-    f = open(nombre_archivo)
-    rows = csv.reader(f)
-    encabezados = next(rows)
+    rows = leer_camion(nombre_archivo)
     valor_total = 0
     for n_fila, fila in enumerate(rows, start=1):
-        record = dict(zip(encabezados, fila))
+        record = fila
         try: #Control de registros vacíos en cualquier punto del archivo
-            cajon = int(record['cajones'])
-            precio = float(record['precio'])
-            valor_total += int(cajon)*float(precio)
+            cajon = record['cajones']
+            precio = record['precio']
+            valor_total += cajon*precio
         except ValueError:
             print(f'Fila {n_fila}: No puede interpretar: {fila}')
             continue
-    f.close()
     return valor_total
 
 #%%
-# costo = costo_camion('../Data/fecha_camion.csv') #Aqui utilizo missing puede ser camion
-# print('Costo total', costo)
+#costo = costo_camion('../Data/camion.csv') #Aqui utilizo missing puede ser camion
+#print('Costo total', costo)
 
 """
 ----------------
