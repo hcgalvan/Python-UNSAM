@@ -17,7 +17,8 @@ def parse_csv(nombre_archivo, select = None, types = None, has_headers=True):
         filas = csv.reader(f)
 
         # Lee los encabezados del archivo
-        encabezados = next(filas)
+        if has_headers:
+            encabezados = next(filas)
 
         # Si se indicó un selector de columnas,
         #    buscar los índices de las columnas especificadas.
@@ -31,33 +32,46 @@ def parse_csv(nombre_archivo, select = None, types = None, has_headers=True):
             
         else:
             indices = []
-
+        
         registros = []
+            
         for fila in filas:
-            if not fila:    # Saltear filas vacías
-                continue
             if has_headers:  
                 if indices:
                     fila = [fila[index] for index in indices]
                 
                 if types:
+                    
                     fila = [func(val) for func, val in zip(types, fila) ]
 
                 registro = dict(zip(encabezados, fila))
                 registros.append(registro)
             else:
                 if types:
-                    fila = [func(val) for func, val in zip(types, fila) ]
-                    t = (fila[0], fila[1])
+                    
+                    if len(fila)>1:
+                        fila = [func(val) for func, val in zip(types, fila) ]
+                        t = (fila[0], fila[1])
+                        #dic_precio[row[0]] = float(row[1])
+                        registros.append(t)
+                        #print(fila)
+                    else:
+                        continue
+                     
                 else:
                     t = (fila[0], fila[1], fila[2] )
-                registros.append(t)    
+                    registros.append(t)    
         
         
         return registros                
 
+'''
+ #%%
+precios = parse_csv('../Data/precios.csv', types = [str, float], has_headers=False )
  #%%
 camion = parse_csv('../Data/camion.csv', types=[str, int, float])
+#%%
 camion1 = parse_csv('../Data/camion.csv', select = ['nombre', 'cajones'])
-camion2 = parse_csv('../Data/camion.csv', select = ['nombre', 'cajones'], types=[str, float])
-camion3 = parse_csv('../Data/camion.csv', types=[str, float], has_headers=False)
+#%%
+camion2 = parse_csv('../Data/camion.csv', select = ['nombre', 'cajones'], types=[str, int])
+'''

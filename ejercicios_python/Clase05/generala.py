@@ -69,7 +69,7 @@ def prob_generala(N):
              return (G2/N)
  
 
-
+'''
 #%%
 print(prob_generala(1))
 
@@ -87,3 +87,4 @@ G = sum([es_generala(tirar()) for i in range(N)])
 prob = G/N
 print(f'Tiré {N} veces, de las cuales {G} saqué generala servida.')
 print(f'Podemos estimar la probabilidad de sacar generala servida mediante {prob:.6f}.')
+'''

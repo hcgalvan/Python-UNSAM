@@ -120,6 +120,8 @@ def especie_promedio_mas_inclinada(lista_arboles):
             especie = e
    
     return especie, promedio 
+
+'''
 #%%
 generalpaz = leer_parque("../Data/arbolado-en-espacios-verdes.csv", "CENTENARIO")
 #%%
@@ -134,4 +136,4 @@ print(obtener_inclinaciones(generalpaz,"Casuarina"))
 print(especimen_mas_inclinado(generalpaz))
 #%%
 print(especie_promedio_mas_inclinada(generalpaz))
-
+'''

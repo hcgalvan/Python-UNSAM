@@ -119,7 +119,7 @@ plt.hist(cuantos_paquetes(100, 20),bins=4)
 plt.show() #el show no hace falta en algunos entornos. A veces lo omitiremos.
 
 
-
+'''
 #%%
 print( experimento_paquetes(100, 30, 10))
 #%%
@@ -151,3 +151,4 @@ plt.title("La curva de llenado se desacelera al final")
 plt.show()
 
 #%%
+'''
