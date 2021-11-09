@@ -14,7 +14,7 @@ C, S = np.cos(X), np.sin(X)
 plt.plot(X, C)
 plt.plot(X, S)
 
-plt.show()
+plt.show() 
 #%%
 import numpy as np
 import matplotlib.pyplot as plt
