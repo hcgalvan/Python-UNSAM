@@ -26,14 +26,13 @@ class Camion:
         return f'Camion({self.lotes})'
     
     def __str__(self): 
-        ## it = self.lotes.__iter__()
-        ## HAY QUE ARREGLAR ESTA PARTE
-        fstring = [' Camion con',str(len(self.lotes)),' lotes: \n ']
+                
+        line = [' Camion con',str(len(self.lotes)),' lotes: \n ']
         for obj in self.lotes:
-            s = '   '+ lote.Lote.__str__(obj)
-            fstring.append(s)
-        return '\n'.join(fstring)        
-        # return f'{self.lotes.nombre}-{self.lotes.cajones}-{self.lotes.precio}'
+            t = '   '+ lote.Lote.__str__(obj)
+            line.append(t)
+        return '\n'.join(line)        
+       
     
     def precio_total(self):
         return sum([l.costo() for l in self.lotes])
